@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Iris Classification</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    <div class = "input form">
+        <form action="{{url_for('predict')}}" method="post" id="input head">
+                <h1 id="heading">Iris Classificaton Prediction</h1>
+                <h3 id="input">Enter the Observed Parameters Below:</h3>
+                <input type="text" name="petal_width" placeholder="Petal Width (mm)">
+                <br>
+                <br>
+                <input type="text" name="petal_length" placeholder="Petal Length (mm)">
+                <br>
+                <br>
+                <input type="text" name="sepal_width" placeholder="Sepal Width (mm)">
+                <br>
+                <br>
+                <input type="text" name="sepal_length" placeholder="Sepal Length (mm)">
+                <br>
+                <br>
+                <button id="submit" type="submit">SUBMIT</button>
+        </form>
+    </div>
+</body>
+</html>

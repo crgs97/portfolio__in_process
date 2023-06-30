@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CHURN PREDICTION APP</title>   
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-sizing: border-box;
+        }
+
+        h1 {
+        	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: oblique;
+            font-weight: bolder;
+        	font-size: 40px;
+        	margin-bottom: 30px;
+        	text-align: center;
+            color:olivedrab;
+        }
+
+        input[type=text], .custom-select {
+        width:100%;
+          padding: 12px;
+          border: 1px solid #086fe4;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+          resize: vertical;
+        }
+        form, table{
+        width:100%;
+        }
+
+        input[type=submit] {
+          background-color: #c1f019;
+          color: rgba(12, 12, 9, 0.87);
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          width: 230px;
+        
+        }
+
+        input[type=submit]:hover {
+          background-color: #d8c308;
+        
+        }
+
+        .container {
+          border-radius: 45px;
+          background-color: rgb(132, 209, 240);
+          padding: 36px;
+          display:flexbox;
+        }
+
+        .form_wrapper {
+          flex:5;
+          text-align:center;
+        }
+        label{
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            font-weight:bolder;
+        	font-size: larger;
+        	margin-bottom: 30px;
+            color: rgb(19, 9, 37);
+        }
+
+        .col-label{
+            width:25%;
+
+        }
+    </style>
+</head>
+
+<body>    
+<h1> Customer Churn Predictor Web App </h1>
+<div class="container">
+    <form action="/result", id="input head", method="post">    
+        <table>
+            <tr>
+                <td class="col-label"> <label>TENURE</label></td>
+                <td class="col-input"> <input type="text" id="Tenure" name="tenure" placeholder="Period (Weeks)"></td></tr>
+            <tr>
+                <td class="col-label"> <label>DISTANCE FROM WAREHOUSE TO HOME</label></td>
+                <td class="col-input"> <input type="text" id="WarehouseToHome" name="wth" placeholder="Distance (Km)"></td></tr>
+            <tr></tr>
+            <tr>
+                <td class="col-label"> <label>HOUR SPEND ON MOBILE/ WEB APPLICATION</label></td>
+                <td class="col-input"> <input type="text" id="HourSpendOnApp" name="hsa" placeholder="Customer Time Spent on App (hours)"></td></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td class="col-label"> <label>AMOUNT OF HIKE ON ORDERS FROM PREVIOUS YEAR</label></td>
+                <td class="col-input"> <input type="text" id="OrderAmountHikeFromlastYear" name="oah" placeholder="Amount ($)"></td></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td class="col-label"> <label>CASHBACK AMOUNT AVAILABLE ON ORDERS</label></td>
+                <td class="col-input"> <input type="text" id="CashbackAmount" name="cba" placeholder="Amount the Customer getting back after using Offers and Coupons($)"></td></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td class="col-label"> <label>NUMBER OF DEVICES REGISTERED</label></td>
+                <td class="col-input"> <input type="text" id="NumberOfDeviceRegistered" name="ndr" placeholder="('Units')"></td></tr>
+            <tr>
+                <td class="col-label"> <label>DAY SINCE PREVIOUS ORDER</label></td>
+                <td class="col-input"> <input type="text" id="DaySinceLastOrder" name="dslo" placeholder="No. of Days after the the last Order by the Customer"></td></tr>            
+            <tr>                
+                <td class="col-label"> <label>GENDER</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="gender" name="g">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value=" ">Transgender</option>
+                    </select></td></tr>
+            <tr>
+                <td class="col-label"> <label>ORDER COUNTS</label></td>
+                <td class="col-input"> <input type="text" id="OrderCount" name="oc" placeholder="Units of Orders"</td></tr>    
+            <tr>
+                <td class="col-label"> <label>CUSTOMER SATISFACTION</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="SatisfactionScore" name="ss">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="3">Averagely Satisfied</option>                        
+                        <option value="2">Poorly Satisfied</option>
+                        <option value="4">Satisfied</option>
+                        <option value="1">Very Poorly Satisfied</option>                        
+                        <option value="5">Very Satisfied</option>
+                    </select></td></tr>
+            <tr>
+                <td class="col-label"> <label>NUMBER OF ADDRESSES</label></td>
+                <td class="col-input"> <input type="text" id="NumberOfAddress" name="na" placeholder="Registered No. of Customer's Addresses"></td></tr>  
+            <tr>
+                <td class="col-label"> <label>COUPONS</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="CouponUsed" name="cu">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select></td></tr>   
+            <tr>
+                <td class="col-label"> <label>CUSTOMER COMPLAINED OR NOT ?</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="Complain" name="complain">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select></td></tr> 
+            <tr>
+                <td class="col-label"> <label>CUSTOMER'S MARITAL STATUS</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="MaritalStatus" name="ms">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">Divorced</option>
+                        <option value="1">Married</option>
+                        <option value="2">Single</option>
+                    </select></td></tr>   
+            <tr>
+                <td class="col-label"> <label>CUSTOMER'S CITY TYPE</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="CityTier" name="ct">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="1">Tier 1 City</option>
+                        <option value="2">Tier 2 City</option>
+                        <option value="3">Tier 3 City</option>
+                    </select></td></tr>
+            <tr>
+                <td class="col-label"> <label>CUSTOMER ORDERED CATEGORIES</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="PreferedOrderCat" name="poc">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">Fashion</option>
+                        <option value="1">Grocery</option>
+                        <option value="2">Laptop & Accessory</option>
+                        <option value="3">Mobile Phone</option>
+                        <option value="4">Others</option>
+                    </select></td></tr>
+            <tr>
+                <td class="col-label"> <label>CUSTOMER PAYMENT MODES</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="PreferredPaymentMode" name="ppm"> 
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="">"Choose from the Options below"</option>
+                        <option value="0">Cash on Delivery</option>
+                        <option value="1">Credit Card</option>
+                        <option value="2">Debit Card</option>
+                        <option value="3">E wallet</option>
+                        <option value="4">UPI</option>
+                    </select></td></tr>   
+            <tr>
+                <td class="col-label"> <label>CUSTOMER LOGIN DEVICES</label></td>
+                <td class="col-input">
+                    <select class="custom-select" id="PreferredLoginDevice" name="pld">
+                        <option value=" ">---"Choose from the Options below"---</option>
+                        <option value="0">Computer</option>
+                        <option value="1">Mobile Phone</option>
+                    </select></td></tr>
+            <tr class="form_wrapper">
+                <td colspan='2'> <input type="submit" value="PREDICT CHURNER " style="box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); background-image: linear-gradient(to right, #1159c5, #34d3ab, #34d3ab, #1159c5);"/></td>
+                </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
